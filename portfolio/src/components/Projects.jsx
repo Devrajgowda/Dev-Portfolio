@@ -82,9 +82,9 @@ const Projects = () => {
                   <span className="text-xs text-[#9a9a9a]">Case study</span>
                   <Link
                     to={`/project/${project.id}`}
-                    className="text-sm font-medium text-[#171a20] hover:opacity-60 transition-opacity"
+                    className="group/link text-sm font-medium text-[#171a20] hover:opacity-60 transition-opacity"
                   >
-                    View ↗
+                    View <span className="inline-block transition-transform duration-300 ease-out group-hover/link:translate-x-1 group-hover/link:-translate-y-0.5">↗</span>
                   </Link>
                 </div>
               </article>
@@ -133,9 +133,9 @@ const Projects = () => {
                   <span className="text-xs text-[#9a9a9a]">Explore</span>
                   <Link
                     to={`/project/${project.id}`}
-                    className="text-sm font-medium text-[#171a20] hover:opacity-60 transition-opacity"
+                    className="group/link text-sm font-medium text-[#171a20] hover:opacity-60 transition-opacity"
                   >
-                    Details →
+                    Details <span className="inline-block transition-transform duration-300 ease-out group-hover/link:translate-x-1">→</span>
                   </Link>
                 </div>
               </article>

@@ -80,6 +80,51 @@
     font-size: 0.65rem;
     text-transform: uppercase;
   }
+
+  /* Tactile button feedback: lift on hover, settle on press */
+  .btn-tactile {
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    will-change: transform;
+  }
+  .btn-tactile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(23, 26, 32, 0.16);
+  }
+  .btn-tactile:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: 0 2px 8px rgba(23, 26, 32, 0.12);
+  }
+
+  /* Underline that slides in from the left on hover */
+  .link-slide {
+    position: relative;
+  }
+  .link-slide::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-slide:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Arrow nudges right on hover, e.g. "View →" links */
+  .arrow-nudge {
+    display: inline-block;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .arrow-nudge,
+  a:hover .arrow-nudge,
+  button:hover .arrow-nudge {
+    transform: translateX(4px);
+  }
 }
 
 @layer utilities {

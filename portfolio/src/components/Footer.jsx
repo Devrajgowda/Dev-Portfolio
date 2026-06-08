@@ -1,4 +1,5 @@
 import React from "react";
+import useScrollReveal from "../hooks/useScrollReveal";
 import githubIcon   from "../assets/Github.svg";
 import linkedinIcon from "../assets/Linkedin.svg";
 import twitterIcon  from "../assets/Twitter.svg";
@@ -12,13 +13,19 @@ const socials = [
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [ref, visible] = useScrollReveal(0.05);
 
   return (
     <footer className="bg-[#fafaf8] border-t border-[#e2e2de] px-6 sm:px-8">
       <div className="max-w-6xl mx-auto py-16 space-y-12">
 
         {/* Main CTA row */}
-        <div className="grid md:grid-cols-3 gap-8 items-start">
+        <div
+          ref={ref}
+          className={`grid md:grid-cols-3 gap-8 items-start transition-all duration-700 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           {/* Quote left */}
           <blockquote className="bg-white border border-[#e2e2de] rounded-2xl p-6">
             <p className="text-sm text-[#474747] leading-relaxed">
@@ -56,7 +63,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-[#e2e2de] bg-[#fafaf8] hover:border-[#171a20] transition-colors duration-200"
+                  className="btn-tactile w-9 h-9 flex items-center justify-center rounded-full border border-[#e2e2de] bg-[#fafaf8] hover:border-[#171a20]"
                 >
                   <img src={icon} alt={label} className="w-4 h-4" style={{ filter: "brightness(0)" }} />
                 </a>

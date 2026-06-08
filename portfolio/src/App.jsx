@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -43,16 +42,14 @@ function MainLayout() {
 
 function App() {
   return (
-    <ThemeProvider>
-      <BrowserRouter basename="/Dev-Portfolio/">
-        <Routes>
-          <Route path="/" element={<MainLayout />} />
-          <Route path="/project/:id" element={<ProjectDetail />} />
-          <Route path="/blogs" element={<BlogsPage />} />
-          <Route path="/blogs/:id" element={<BlogArticlePage />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter basename="/Dev-Portfolio/">
+      <Routes>
+        <Route path="/" element={<MainLayout />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="/blogs" element={<BlogsPage />} />
+        <Route path="/blogs/:id" element={<BlogArticlePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

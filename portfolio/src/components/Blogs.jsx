@@ -61,9 +61,9 @@ const Blogs = () => {
                 <span className="text-xs text-[#9a9a9a]">Article</span>
                 <Link
                   to={`/blogs/${post.id}`}
-                  className="text-sm font-medium text-[#171a20] hover:opacity-60 transition-opacity"
+                  className="group/link text-sm font-medium text-[#171a20] hover:opacity-60 transition-opacity"
                 >
-                  Read ↗
+                  Read <span className="inline-block transition-transform duration-300 ease-out group-hover/link:translate-x-1 group-hover/link:-translate-y-0.5">↗</span>
                 </Link>
               </div>
             </article>
@@ -74,9 +74,10 @@ const Blogs = () => {
         <div className={`text-center transition-all duration-700 ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           <Link
             to="/blogs"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#c0c0bc] text-sm text-[#474747] hover:border-[#171a20] hover:text-[#171a20] transition-all duration-200"
+            className="btn-tactile group/link inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#c0c0bc] text-sm text-[#474747] hover:border-[#171a20] hover:text-[#171a20]"
           >
-            View all articles ↗
+            View all articles
+            <span className="inline-block transition-transform duration-300 ease-out group-hover/link:translate-x-1 group-hover/link:-translate-y-0.5">↗</span>
           </Link>
         </div>
 

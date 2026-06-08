@@ -52,7 +52,7 @@ const Navbar = () => {
             onClick={() => handleNav({ target: "home" })}
             className="flex items-center cursor-pointer group"
           >
-            <span className="w-9 h-9 rounded-xl bg-[#171a20] flex items-center justify-center group-hover:bg-[#2d2d2d] transition-colors duration-200">
+            <span className="w-9 h-9 rounded-xl bg-[#171a20] flex items-center justify-center transition-all duration-200 group-hover:bg-[#2d2d2d] group-hover:scale-105 group-active:scale-95">
               <span className="text-white text-sm font-bold tracking-tight">DG</span>
             </span>
           </button>
@@ -63,7 +63,7 @@ const Navbar = () => {
               <li key={link.label}>
                 <button
                   onClick={() => handleNav(link)}
-                  className="text-sm text-[#767676] hover:text-[#171a20] transition-colors duration-200 cursor-pointer"
+                  className="link-slide text-sm text-[#767676] hover:text-[#171a20] transition-colors duration-200 cursor-pointer"
                 >
                   {link.label}
                 </button>
@@ -75,7 +75,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
             <a
               href="mailto:devrajgowda.d@gmail.com"
-              className="text-sm font-medium px-5 py-2 rounded-full bg-[#171a20] text-white hover:bg-[#2d2d2d] transition-colors duration-200"
+              className="btn-tactile text-sm font-medium px-5 py-2 rounded-full bg-[#171a20] text-white hover:bg-[#2d2d2d]"
             >
               Contact
             </a>

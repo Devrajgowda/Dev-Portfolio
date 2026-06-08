@@ -1,4 +1,5 @@
 import React from "react";
+import useScrollReveal from "../hooks/useScrollReveal";
 import profileImg from "../assets/image-removebg-preview 2.png";
 import awsBadge from "../assets/aws-certified.png";
 import githubIcon from "../assets/Github.svg";
@@ -33,6 +34,9 @@ const heroNotes = [
 ];
 
 const Hero = () => {
+  const [contentRef, contentVisible] = useScrollReveal(0.1);
+  const [photoRef, photoVisible]     = useScrollReveal(0.2);
+
   const handleScroll = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -42,7 +46,12 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
 
         {/* Left column */}
-        <div className="space-y-10">
+        <div
+          ref={contentRef}
+          className={`space-y-10 transition-all duration-700 ${
+            contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <div>
             <span className="section-label mb-5 block w-fit">Lead Engineer</span>
             <h1 className="text-5xl sm:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-[#171a20]">
@@ -58,13 +67,13 @@ const Hero = () => {
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => handleScroll("projects")}
-              className="px-6 py-3 bg-[#171a20] text-white text-sm font-medium rounded-full hover:bg-[#2d2d2d] transition-colors duration-200"
+              className="btn-tactile px-6 py-3 bg-[#171a20] text-white text-sm font-medium rounded-full hover:bg-[#2d2d2d]"
             >
               View projects
             </button>
             <button
               onClick={() => handleScroll("about")}
-              className="px-6 py-3 border border-[#c0c0bc] text-[#474747] text-sm font-medium rounded-full hover:border-[#171a20] hover:text-[#171a20] transition-all duration-200"
+              className="btn-tactile px-6 py-3 border border-[#c0c0bc] text-[#474747] text-sm font-medium rounded-full hover:border-[#171a20] hover:text-[#171a20]"
             >
               About me
             </button>
@@ -108,7 +117,7 @@ const Hero = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 flex items-center justify-center border border-[#e2e2de] rounded-full bg-white hover:border-[#171a20] transition-colors duration-200"
+                  className="btn-tactile w-9 h-9 flex items-center justify-center border border-[#e2e2de] rounded-full bg-white hover:border-[#171a20]"
                 >
                   <img src={icon} alt={label} className="w-4 h-4" style={{ filter: "brightness(0)" }} />
                 </a>
@@ -118,21 +127,30 @@ const Hero = () => {
         </div>
 
         {/* Right column */}
-        <div className="relative">
-          <div className="bg-white border border-[#e2e2de] rounded-3xl p-6 shadow-[0_4px_32px_rgba(0,0,0,0.06)]">
+        <div
+          ref={photoRef}
+          className={`relative transition-all duration-1000 ${
+            photoVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <div className="group bg-white border border-[#e2e2de] rounded-3xl p-6 shadow-[0_4px_32px_rgba(0,0,0,0.06)] transition-shadow duration-500 hover:shadow-[0_12px_48px_rgba(0,0,0,0.1)]">
             {/* Profile image */}
-            <div className="mx-auto w-56 h-56 sm:w-64 sm:h-64 rounded-2xl overflow-hidden bg-[#f3f3f0] mb-6">
+            <div
+              className={`mx-auto w-56 h-56 sm:w-64 sm:h-64 rounded-2xl overflow-hidden bg-[#f3f3f0] mb-6 ${
+                photoVisible ? "animate-photo-in" : "opacity-0"
+              }`}
+            >
               <img
                 src={profileImg}
                 alt="Devaraj"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
               />
             </div>
 
             {/* Info cards */}
             <div className="grid grid-cols-2 gap-2.5">
               {heroNotes.map(({ label, value }) => (
-                <div key={label} className="border border-[#e2e2de] rounded-xl px-3.5 py-3 bg-[#fafaf8]">
+                <div key={label} className="border border-[#e2e2de] rounded-xl px-3.5 py-3 bg-[#fafaf8] transition-colors duration-200 hover:border-[#171a20]/30">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a] mb-1">{label}</p>
                   <p className="text-xs text-[#2d2d2d] leading-snug">{value}</p>
                 </div>
@@ -141,7 +159,7 @@ const Hero = () => {
           </div>
 
           {/* AWS badge floating card */}
-          <div className="absolute -left-5 top-8 bg-white border border-[#e2e2de] rounded-2xl px-4 py-3 shadow-[0_2px_16px_rgba(0,0,0,0.08)]">
+          <div className="absolute -left-5 top-8 animate-float-slow bg-white border border-[#e2e2de] rounded-2xl px-4 py-3 shadow-[0_2px_16px_rgba(0,0,0,0.08)] transition-shadow duration-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.14)]">
             <a
               href="https://www.credly.com/badges/f5c0f812-ed9b-4a10-9f92-925902859f7a/linked_in_profile"
               target="_blank"
@@ -157,7 +175,7 @@ const Hero = () => {
           </div>
 
           {/* Preferred stack floating card */}
-          <div className="absolute -right-5 -bottom-4 bg-white border border-[#e2e2de] rounded-2xl px-4 py-3 shadow-[0_2px_16px_rgba(0,0,0,0.08)] w-44">
+          <div className="absolute -right-5 -bottom-4 animate-float-slower bg-white border border-[#e2e2de] rounded-2xl px-4 py-3 shadow-[0_2px_16px_rgba(0,0,0,0.08)] w-44 transition-shadow duration-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.14)]">
             <p className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a] mb-1">Stack</p>
             <p className="text-xs text-[#2d2d2d]">Java · Spring Boot · AWS</p>
           </div>
