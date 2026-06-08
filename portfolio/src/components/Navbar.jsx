@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "#home", target: "home" },
-  { label: "#about-me", target: "about" },
-  { label: "#projects", target: "projects" },
-  { label: "#blogs", route: "/blogs" },
+  { label: "Home",     target: "home" },
+  { label: "About",    target: "about" },
+  { label: "Projects", target: "projects" },
+  { label: "Blog",     route: "/blogs" },
 ];
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
+  const navigate  = useNavigate();
+  const location  = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -21,8 +21,7 @@ const Navbar = () => {
   }, []);
 
   const scrollToTarget = (target) => {
-    const el = document.getElementById(target);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleNav = (link) => {
@@ -42,30 +41,29 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-bg-secondary/90 backdrop-blur-2xl border-b border-border/70 shadow-[0_12px_60px_rgba(4,6,20,0.45)]"
+          ? "bg-[#fafaf8]/95 backdrop-blur-xl border-b border-[#e2e2de]"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between gap-3 py-4">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+        <div className="flex items-center justify-between py-5">
           {/* Branding */}
           <button
             onClick={() => handleNav({ target: "home" })}
-            className="flex items-center gap-3 px-4 py-2 rounded-xl border border-border-light/70 bg-bg-card/60 hover:border-accent-purple/50 transition-all duration-200 cursor-pointer"
+            className="flex items-center cursor-pointer group"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse2" />
-            <span className="font-mono text-xs tracking-[0.3em] uppercase text-slate-300">
-              @devaraj.dev
+            <span className="w-9 h-9 rounded-xl bg-[#171a20] flex items-center justify-center group-hover:bg-[#2d2d2d] transition-colors duration-200">
+              <span className="text-white text-sm font-bold tracking-tight">DG</span>
             </span>
           </button>
 
           {/* Desktop navigation */}
-          <ul className="hidden md:flex items-center gap-3 flex-1 justify-end mr-[72px]">
+          <ul className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.label}>
                 <button
                   onClick={() => handleNav(link)}
-                  className="px-3 py-2 text-xs font-mono tracking-[0.15em] uppercase text-slate-400 hover:text-accent-purple-light hover:bg-white/5 rounded-lg transition-all duration-200 cursor-pointer"
+                  className="text-sm text-[#767676] hover:text-[#171a20] transition-colors duration-200 cursor-pointer"
                 >
                   {link.label}
                 </button>
@@ -73,49 +71,47 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Actions */}
-          <div className="flex items-center gap-2">
-            <button
-              className="md:hidden flex flex-col gap-1 p-2 border border-border-light/70 rounded-xl"
-              onClick={() => setMenuOpen((prev) => !prev)}
-              aria-label="Toggle menu"
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center">
+            <a
+              href="mailto:devrajgowda.d@gmail.com"
+              className="text-sm font-medium px-5 py-2 rounded-full bg-[#171a20] text-white hover:bg-[#2d2d2d] transition-colors duration-200"
             >
-              <span
-                className={`block w-6 h-0.5 bg-slate-100 rounded transition-all duration-300 ${
-                  menuOpen ? "translate-y-1.5 rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`block w-6 h-0.5 bg-slate-100 rounded transition-all duration-300 ${
-                  menuOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`block w-6 h-0.5 bg-slate-100 rounded transition-all duration-300 ${
-                  menuOpen ? "-translate-y-1.5 -rotate-45" : ""
-                }`}
-              />
-            </button>
+              Contact
+            </a>
           </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden flex flex-col gap-1.5 p-2"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-5 h-px bg-[#171a20] transition-all duration-300 ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`} />
+            <span className={`block w-5 h-px bg-[#171a20] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-5 h-px bg-[#171a20] transition-all duration-300 ${menuOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
+          </button>
         </div>
 
-        {/* Mobile list */}
-        <div
-          className={`md:hidden grid overflow-hidden transition-all duration-300 ${
-            menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-          }`}
-        >
-          <div className="overflow-hidden border-t border-border/60">
-            <div className="flex flex-col py-3">
+        {/* Mobile menu */}
+        <div className={`md:hidden grid overflow-hidden transition-all duration-300 ${menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+          <div className="overflow-hidden border-t border-[#e2e2de]">
+            <div className="flex flex-col py-4 gap-1">
               {navLinks.map((link) => (
                 <button
                   key={link.label}
                   onClick={() => handleNav(link)}
-                  className="px-3 py-2 text-left text-xs font-mono tracking-[0.15em] uppercase text-slate-400 hover:text-accent-purple-light hover:bg-white/5 transition-colors"
+                  className="px-2 py-2.5 text-left text-sm text-[#767676] hover:text-[#171a20] transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
+              <a
+                href="mailto:devrajgowda.d@gmail.com"
+                className="mt-2 px-5 py-2.5 text-center text-sm font-medium rounded-full bg-[#171a20] text-white"
+              >
+                Contact
+              </a>
             </div>
           </div>
         </div>

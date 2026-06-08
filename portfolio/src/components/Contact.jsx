@@ -1,121 +1,87 @@
 import React, { useState } from "react";
-import githubIcon from "../assets/Github.svg";
+import githubIcon   from "../assets/Github.svg";
 import linkedinIcon from "../assets/Linkedin.svg";
-import twitterIcon from "../assets/Twitter.svg";
-import discordIcon from "../assets/Discord.svg";
-import telegramIcon from "../assets/Telegram.svg";
-import dribbleIcon from "../assets/Dribble.svg";
+import twitterIcon  from "../assets/Twitter.svg";
 
 const socials = [
-  { icon: githubIcon, label: "GitHub", href: "https://github.com" },
-  { icon: linkedinIcon, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: twitterIcon, label: "Twitter", href: "https://twitter.com" },
-  { icon: discordIcon, label: "Discord", href: "https://discord.com" },
-  { icon: telegramIcon, label: "Telegram", href: "https://telegram.org" },
-  { icon: dribbleIcon, label: "Dribbble", href: "https://dribbble.com" },
+  { icon: githubIcon,   label: "GitHub",   href: "https://github.com/devaraj-ncirl" },
+  { icon: linkedinIcon, label: "LinkedIn",  href: "https://www.linkedin.com/in/devarajdevegowda" },
+  { icon: twitterIcon,  label: "Twitter",   href: "https://twitter.com" },
 ];
 
 const channels = [
-  { label: "email", value: "devrajgowda.d@gmail.com" },
-  { label: "location", value: "Bangalore, India · Remote" },
-  { label: "timezone", value: "UTC+05:30 · IST" },
+  { label: "Email",    value: "devrajgowda.d@gmail.com" },
+  { label: "Location", value: "Dublin, Ireland · Remote-friendly" },
+  { label: "Timezone", value: "UTC+01:00 · IST" },
 ];
 
 const Contact = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Contact form submitted:", form);
     setSent(true);
     setTimeout(() => setSent(false), 4000);
     setForm({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 bg-bg-secondary">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <section id="contact" className="py-28 px-6 sm:px-8 bg-[#fafaf8]">
+      <div className="max-w-6xl mx-auto space-y-14">
+
+        {/* Header */}
         <div className="text-center space-y-4">
-          <span className="section-label">#contacts</span>
-          <h2 className="text-4xl sm:text-5xl font-semibold">
-            Let&apos;s plan your next release together
+          <span className="section-label mb-5 block w-fit mx-auto">Contact</span>
+          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-[#171a20]">
+            Let's plan your next release together
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-[#767676] max-w-xl mx-auto text-base leading-relaxed">
             For new projects, workshops, or collaborations, drop a quick note.
-            I respond within 24 hours with availability, next steps, and a
-            timeline tailored to your scope.
+            I respond within 24 hours.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-start">
-          {/* Contact cards */}
-          <div className="space-y-6">
-            <div className="panel p-6 rounded-3xl border border-border/60 space-y-5">
+          {/* Info */}
+          <div className="space-y-4">
+            <div className="bg-white border border-[#e2e2de] rounded-2xl p-7 space-y-4">
               {channels.map(({ label, value }) => (
-                <div
-                  key={label}
-                  className="flex flex-col border border-border/50 rounded-2xl px-4 py-3 bg-bg-primary/60"
-                >
-                  <span className="text-[11px] font-mono uppercase tracking-[0.3em] text-slate-500">
-                    {label}
-                  </span>
-                  {label === "email" ? (
-                    <a
-                      href={`mailto:${value}`}
-                      className="text-slate-100 text-sm sm:text-base mt-1 hover:text-accent-purple-light transition-colors"
-                    >
+                <div key={label} className="border border-[#e2e2de] rounded-xl px-4 py-3 bg-[#fafaf8]">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a] block mb-1">{label}</span>
+                  {label === "Email" ? (
+                    <a href={`mailto:${value}`} className="text-sm text-[#2d2d2d] hover:text-[#171a20] transition-colors">
                       {value}
                     </a>
                   ) : (
-                    <span className="text-slate-200 text-sm sm:text-base mt-1">
-                      {value}
-                    </span>
+                    <span className="text-sm text-[#2d2d2d]">{value}</span>
                   )}
                 </div>
               ))}
-              <div className="rounded-2xl border border-border/50 px-4 py-4 bg-gradient-to-r from-accent-purple/10 to-accent-blue/10">
-                <p className="text-xs font-mono uppercase tracking-[0.3em] text-slate-500">
-                  availability
-                </p>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse2" />
-                  <p className="text-sm text-slate-100">
-                    Booking April–May 2026
-                  </p>
+              <div className="border border-[#e2e2de] rounded-xl px-4 py-3 bg-[#fafaf8]">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a] mb-2">Availability</p>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse2" />
+                  <p className="text-sm text-[#2d2d2d]">Open to opportunities</p>
                 </div>
               </div>
             </div>
 
-            <div className="panel p-6 rounded-3xl border border-border/60">
-              <p className="text-xs font-mono uppercase tracking-[0.3em] text-slate-500 mb-4">
-                socials
-              </p>
-              <div className="grid grid-cols-2 gap-2.5">
+            <div className="bg-white border border-[#e2e2de] rounded-2xl p-7">
+              <p className="text-xs uppercase tracking-[0.2em] text-[#9a9a9a] mb-4">Socials</p>
+              <div className="flex flex-col gap-2">
                 {socials.map(({ icon, label, href }) => (
                   <a
                     key={label}
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 rounded-2xl border border-border-light/60 bg-bg-primary/60 px-3 py-2 text-slate-300 hover:border-accent-purple/40 hover:-translate-y-0.5 transition-all duration-200"
+                    className="flex items-center gap-3 border border-[#e2e2de] rounded-xl px-4 py-3 text-[#474747] hover:border-[#171a20]/30 hover:text-[#171a20] transition-all duration-200"
                   >
-                    <img
-                      src={icon}
-                      alt={label}
-                      className="w-4 h-4"
-                      style={{ filter: "brightness(0) invert(1)" }}
-                    />
-                    <span className="text-sm font-medium">{label}</span>
+                    <img src={icon} alt={label} className="w-4 h-4" style={{ filter: "brightness(0)" }} />
+                    <span className="text-sm">{label}</span>
                   </a>
                 ))}
               </div>
@@ -125,20 +91,18 @@ const Contact = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="panel border border-border/60 rounded-[32px] p-8 space-y-5 bg-bg-primary/70"
+            className="bg-white border border-[#e2e2de] rounded-2xl p-8 space-y-5"
           >
             {sent && (
-              <div className="border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 text-sm px-4 py-3 rounded-2xl text-center">
+              <div className="border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm px-4 py-3 rounded-xl text-center">
                 Message sent — talk soon!
               </div>
             )}
 
             <div className="grid sm:grid-cols-2 gap-4">
               {["name", "email"].map((field) => (
-                <label key={field} className="space-y-2 text-sm text-slate-200">
-                  <span className="text-xs font-mono uppercase tracking-[0.25em] text-slate-500 block">
-                    {field}
-                  </span>
+                <label key={field} className="block">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a] block mb-2">{field}</span>
                   <input
                     type={field === "email" ? "email" : "text"}
                     name={field}
@@ -146,16 +110,14 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder={field === "name" ? "John Doe" : "john@email.com"}
                     required
-                    className="w-full rounded-2xl border border-border-light/60 bg-bg-secondary/70 px-4 py-3 text-sm outline-none focus:border-accent-purple/70 transition-all duration-200"
+                    className="w-full rounded-xl border border-[#e2e2de] bg-[#fafaf8] px-4 py-3 text-sm text-[#171a20] placeholder-[#b8b8b8] outline-none focus:border-[#171a20]/40 transition-colors"
                   />
                 </label>
               ))}
             </div>
 
-            <label className="space-y-2 text-sm text-slate-200">
-              <span className="text-xs font-mono uppercase tracking-[0.25em] text-slate-500 block">
-                subject
-              </span>
+            <label className="block">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a] block mb-2">Subject</span>
               <input
                 type="text"
                 name="subject"
@@ -163,14 +125,12 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="New product launch"
                 required
-                className="w-full rounded-2xl border border-border-light/60 bg-bg-secondary/70 px-4 py-3 text-sm outline-none focus:border-accent-purple/70 transition-all duration-200"
+                className="w-full rounded-xl border border-[#e2e2de] bg-[#fafaf8] px-4 py-3 text-sm text-[#171a20] placeholder-[#b8b8b8] outline-none focus:border-[#171a20]/40 transition-colors"
               />
             </label>
 
-            <label className="space-y-2 text-sm text-slate-200">
-              <span className="text-xs font-mono uppercase tracking-[0.25em] text-slate-500 block">
-                project details
-              </span>
+            <label className="block">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a] block mb-2">Project details</span>
               <textarea
                 name="message"
                 rows="5"
@@ -178,16 +138,15 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="Timeline, goals, success metrics..."
                 required
-                className="w-full rounded-2xl border border-border-light/60 bg-bg-secondary/70 px-4 py-3 text-sm outline-none focus:border-accent-purple/70 transition-all duration-200 resize-none"
+                className="w-full rounded-xl border border-[#e2e2de] bg-[#fafaf8] px-4 py-3 text-sm text-[#171a20] placeholder-[#b8b8b8] outline-none focus:border-[#171a20]/40 transition-colors resize-none"
               />
             </label>
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-purple text-sm font-mono tracking-[0.3em] uppercase text-white py-3 glow-purple hover:-translate-y-0.5 transition-all duration-200"
+              className="w-full py-3.5 rounded-xl bg-[#171a20] text-white text-sm font-medium hover:bg-[#2d2d2d] transition-colors duration-200"
             >
-              send message
-              <span>↗</span>
+              Send message ↗
             </button>
           </form>
         </div>

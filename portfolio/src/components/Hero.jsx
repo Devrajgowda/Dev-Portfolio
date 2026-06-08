@@ -4,24 +4,18 @@ import awsBadge from "../assets/aws-certified.png";
 import githubIcon from "../assets/Github.svg";
 import linkedinIcon from "../assets/Linkedin.svg";
 import twitterIcon from "../assets/Twitter.svg";
-import discordIcon from "../assets/Discord.svg";
 
 const socials = [
-  { icon: githubIcon, label: "GitHub", href: "https://github.com" },
-  {
-    icon: linkedinIcon,
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/devarajdevegowda",
-  },
-  { icon: twitterIcon, label: "Twitter", href: "https://twitter.com" },
-  { icon: discordIcon, label: "Discord", href: "https://discord.com" },
+  { icon: githubIcon,   label: "GitHub",   href: "https://github.com/devaraj-ncirl" },
+  { icon: linkedinIcon, label: "LinkedIn",  href: "https://www.linkedin.com/in/devarajdevegowda" },
+  { icon: twitterIcon,  label: "Twitter",   href: "https://twitter.com" },
 ];
 
 const stats = [
-  { label: "years building", value: "9+" },
-  { label: "cloud launches", value: "25" },
-  { label: "releases / yr", value: "24" },
-  { label: "engineers led", value: "8+" },
+  { label: "Years experience", value: "9+" },
+  { label: "Cloud launches",   value: "25" },
+  { label: "Releases / yr",    value: "24" },
+  { label: "Engineers led",    value: "8+" },
 ];
 
 const focus = [
@@ -33,9 +27,9 @@ const focus = [
 
 const heroNotes = [
   { label: "Current role", value: "Lead Software Engineer · Fiserv" },
-  { label: "LinkedIn", value: "linkedin.com/in/devarajdevegowda" },
-  { label: "Phone", value: "+353 894 525 190" },
-  { label: "Location", value: "Dublin · Remote-friendly" },
+  { label: "Location",     value: "Dublin · Remote-friendly" },
+  { label: "Phone",        value: "+353 894 525 190" },
+  { label: "Available",    value: "Open to opportunities" },
 ];
 
 const Hero = () => {
@@ -44,71 +38,58 @@ const Hero = () => {
   };
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen px-4 sm:px-6 pt-32 pb-16 bg-bg-primary"
-    >
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+    <section id="home" className="min-h-screen px-6 sm:px-8 pt-32 pb-20 bg-[#fafaf8]">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+
         {/* Left column */}
-        <div className="space-y-8">
-          <span className="section-label">#engineer</span>
+        <div className="space-y-10">
           <div>
-            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-semibold leading-tight tracking-tight">
-              <span className="gradient-text-purple">Devaraj Devegowda</span>
+            <span className="section-label mb-5 block w-fit">Lead Engineer</span>
+            <h1 className="text-5xl sm:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-[#171a20]">
+              Devaraj<br />Devegowda
             </h1>
-            <p className="text-slate-400 text-base sm:text-lg mt-4 max-w-xl">
-              Lead engineer with 9+ years building cloud-native Java systems
-              from microservices to data pipelines — on AWS and Azure.
+            <p className="text-[#767676] text-base sm:text-lg mt-5 max-w-md leading-relaxed">
+              9+ years building cloud-native Java systems — microservices,
+              data pipelines, and platform migrations on AWS and Azure.
             </p>
           </div>
 
+          {/* CTAs */}
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => handleScroll("projects")}
-              className="inline-flex items-center gap-3 px-6 py-3 bg-bg-card border border-border-light rounded-xl text-sm font-mono tracking-[0.18em] uppercase hover:border-accent-purple/60 hover:text-accent-purple-light transition-all duration-200"
+              className="px-6 py-3 bg-[#171a20] text-white text-sm font-medium rounded-full hover:bg-[#2d2d2d] transition-colors duration-200"
             >
-              View experience
-              <span>↗</span>
+              View projects
+            </button>
+            <button
+              onClick={() => handleScroll("about")}
+              className="px-6 py-3 border border-[#c0c0bc] text-[#474747] text-sm font-medium rounded-full hover:border-[#171a20] hover:text-[#171a20] transition-all duration-200"
+            >
+              About me
             </button>
           </div>
 
-          {/* Quote */}
-          <div className="panel panel-grid border border-border/70 rounded-3xl p-5 text-left">
-            <p className="text-sm font-mono tracking-[0.2em] uppercase text-slate-500 mb-3">
-              // mantra
-            </p>
-            <p className="text-lg text-slate-200 leading-snug">
-              &ldquo;With great power comes great electricity bill.&rdquo;
-            </p>
-          </div>
-
           {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[#e2e2de] border border-[#e2e2de] rounded-2xl overflow-hidden">
             {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="panel px-4 py-5 border border-border/60 rounded-2xl shadow-inner-grid"
-              >
-                <p className="text-2xl font-semibold text-slate-50">
-                  {stat.value}
-                </p>
-                <p className="text-xs font-mono uppercase tracking-[0.18em] text-slate-400 mt-2">
-                  {stat.label}
-                </p>
+              <div key={stat.label} className="bg-white px-5 py-5">
+                <p className="text-2xl font-semibold text-[#171a20]">{stat.value}</p>
+                <p className="text-xs text-[#9a9a9a] mt-1 leading-snug">{stat.label}</p>
               </div>
             ))}
           </div>
 
-          {/* Focus */}
+          {/* Focus areas */}
           <div>
-            <p className="text-xs font-mono uppercase tracking-[0.25em] text-slate-500 mb-3">
-              focus areas
+            <p className="text-xs uppercase tracking-[0.2em] text-[#9a9a9a] mb-3">
+              Focus areas
             </p>
             <div className="flex flex-wrap gap-2">
               {focus.map((item) => (
                 <span
                   key={item}
-                  className="px-3 py-1.5 rounded-lg border border-border-light/60 text-xs font-medium text-slate-300 bg-white/5"
+                  className="px-3.5 py-1.5 rounded-full border border-[#e2e2de] text-xs text-[#474747] bg-white"
                 >
                   {item}
                 </span>
@@ -116,11 +97,9 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Social */}
-          <div className="flex flex-wrap items-center gap-4">
-            <p className="text-xs font-mono uppercase tracking-[0.3em] text-slate-500">
-              find me
-            </p>
+          {/* Socials */}
+          <div className="flex items-center gap-4">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#9a9a9a]">Find me</p>
             <div className="flex gap-2">
               {socials.map(({ icon, label, href }) => (
                 <a
@@ -129,14 +108,9 @@ const Hero = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 flex items-center justify-center border border-border-light/60 rounded-xl bg-bg-secondary/60 hover:border-accent-purple/40 hover:-translate-y-0.5 transition-all duration-200"
+                  className="w-9 h-9 flex items-center justify-center border border-[#e2e2de] rounded-full bg-white hover:border-[#171a20] transition-colors duration-200"
                 >
-                  <img
-                    src={icon}
-                    alt={label}
-                    className="w-4 h-4"
-                    style={{ filter: "brightness(0) invert(1)" }}
-                  />
+                  <img src={icon} alt={label} className="w-4 h-4" style={{ filter: "brightness(0)" }} />
                 </a>
               ))}
             </div>
@@ -145,65 +119,50 @@ const Hero = () => {
 
         {/* Right column */}
         <div className="relative">
-          <div className="panel dotted-corner rounded-[32px] p-6 border border-border/70 bg-bg-secondary/80 shadow-card-soft">
-            <div className="absolute inset-6 border border-white/5 rounded-[28px]" />
-            <div className="relative bg-gradient-to-b from-bg-card/30 to-bg-card rounded-[26px] p-6 border border-white/5 min-h-[420px] flex flex-col justify-between">
-              <div className="relative mx-auto w-56 h-56 sm:w-64 sm:h-64 rounded-full overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(163,139,255,0.2)]">
-                <img
-                  src={profileImg}
-                  alt="Devaraj"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {heroNotes.map(({ label, value }) => (
-                  <div
-                    key={label}
-                    className="border border-border/60 rounded-2xl px-4 py-3 bg-bg-primary/70"
-                  >
-                    <p className="text-[10px] font-mono uppercase tracking-[0.25em] text-slate-500 mb-1">
-                      {label}
-                    </p>
-                    <p className="text-sm text-slate-100 leading-snug">
-                      {value}
-                    </p>
-                  </div>
-                ))}
-              </div>
+          <div className="bg-white border border-[#e2e2de] rounded-3xl p-6 shadow-[0_4px_32px_rgba(0,0,0,0.06)]">
+            {/* Profile image */}
+            <div className="mx-auto w-56 h-56 sm:w-64 sm:h-64 rounded-2xl overflow-hidden bg-[#f3f3f0] mb-6">
+              <img
+                src={profileImg}
+                alt="Devaraj"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+
+            {/* Info cards */}
+            <div className="grid grid-cols-2 gap-2.5">
+              {heroNotes.map(({ label, value }) => (
+                <div key={label} className="border border-[#e2e2de] rounded-xl px-3.5 py-3 bg-[#fafaf8]">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a] mb-1">{label}</p>
+                  <p className="text-xs text-[#2d2d2d] leading-snug">{value}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="absolute -left-6 top-10 bg-bg-card border border-border rounded-2xl px-5 py-4 shadow-card-soft">
+          {/* AWS badge floating card */}
+          <div className="absolute -left-5 top-8 bg-white border border-[#e2e2de] rounded-2xl px-4 py-3 shadow-[0_2px_16px_rgba(0,0,0,0.08)]">
             <a
               href="https://www.credly.com/badges/f5c0f812-ed9b-4a10-9f92-925902859f7a/linked_in_profile"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-3"
             >
-              <img
-                src={awsBadge}
-                alt="AWS Certified Developer"
-                className="w-10 h-10 object-contain"
-              />
+              <img src={awsBadge} alt="AWS Certified" className="w-9 h-9 object-contain" />
               <div>
-                <p className="text-xs font-mono uppercase tracking-[0.25em] text-slate-500">
-                  Certification
-                </p>
-                <p className="text-sm font-semibold text-slate-100">
-                  AWS Developer Associate
-                </p>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a]">Certified</p>
+                <p className="text-xs font-semibold text-[#171a20]">AWS Developer</p>
               </div>
             </a>
           </div>
-          <div className="absolute -right-8 -bottom-6 bg-bg-secondary border border-border rounded-2xl px-5 py-4 w-48 shadow-card-soft">
-            <p className="text-xs font-mono uppercase tracking-[0.25em] text-slate-500">
-              Preferred tools
-            </p>
-            <p className="text-sm text-slate-100 mt-2">
-              Java · Spring Boot · AWS
-            </p>
+
+          {/* Preferred stack floating card */}
+          <div className="absolute -right-5 -bottom-4 bg-white border border-[#e2e2de] rounded-2xl px-4 py-3 shadow-[0_2px_16px_rgba(0,0,0,0.08)] w-44">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[#9a9a9a] mb-1">Stack</p>
+            <p className="text-xs text-[#2d2d2d]">Java · Spring Boot · AWS</p>
           </div>
         </div>
+
       </div>
     </section>
   );

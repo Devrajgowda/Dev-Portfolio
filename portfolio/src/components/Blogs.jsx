@@ -7,61 +7,61 @@ const latest = blogs.slice(0, 6);
 
 const Blogs = () => {
   const [sectionRef, sectionVisible] = useScrollReveal();
-  const [gridRef, gridVisible] = useScrollReveal(0.05);
+  const [gridRef, gridVisible]       = useScrollReveal(0.05);
 
   return (
-    <section id="blogs" className="py-24 px-4 sm:px-6 bg-bg-secondary">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <section id="blogs" className="py-28 px-6 sm:px-8 bg-[#f3f3f0]">
+      <div className="max-w-6xl mx-auto space-y-14">
+
+        {/* Header */}
         <div
           ref={sectionRef}
           className={`text-center transition-all duration-700 ${
             sectionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <span className="section-label">#knowledge-base</span>
-          <h2 className="text-4xl sm:text-5xl font-semibold mt-4">
-            Writing about design systems, UX research &amp; front-end craft
+          <span className="section-label mb-5 block w-fit mx-auto">Writing</span>
+          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-[#171a20]">
+            Notes on engineering,<br />cloud, and craft
           </h2>
-          <p className="text-slate-400 max-w-3xl mx-auto mt-4">
-            Weekly notes that document how I run workshops, translate Figma to
-            React, and keep design decisions transparent for the whole team.
+          <p className="text-[#767676] max-w-2xl mx-auto mt-5 text-base leading-relaxed">
+            Weekly notes documenting how I run workshops, architect systems,
+            and keep engineering decisions transparent for the whole team.
           </p>
         </div>
 
+        {/* Grid */}
         <div
           ref={gridRef}
-          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 transition-all duration-700 ${
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 transition-all duration-700 ${
             gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           {latest.map((post, index) => (
             <article
               key={post.id}
-              className="panel border border-border/60 rounded-[26px] p-5 flex flex-col gap-4 hover:border-accent-purple/40 transition-all duration-300"
-              style={{
-                transitionDelay: gridVisible ? `${index * 70}ms` : "0ms",
-              }}
+              className="bg-white border border-[#e2e2de] rounded-2xl p-6 flex flex-col gap-4 hover:border-[#171a20]/30 hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300"
+              style={{ transitionDelay: gridVisible ? `${index * 60}ms` : "0ms" }}
             >
-              <header className="flex items-center justify-between text-[11px] font-mono uppercase tracking-[0.25em] text-slate-500">
-                <span>{post.tag}</span>
-                <span>{post.displayDate}</span>
-              </header>
-              <div>
-                <p className="text-xs font-mono uppercase tracking-[0.25em] text-slate-500 mb-2">
-                  {post.readTime}
-                </p>
-                <h3 className="text-lg font-semibold text-slate-100">
-                  {post.title}
-                </h3>
-              </div>
-              <p className="text-slate-400 text-sm flex-1">{post.excerpt}</p>
-              <div className="flex items-center justify-between pt-2 border-t border-border/60">
-                <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-slate-500">
-                  article
+              <header className="flex items-center justify-between">
+                <span className="text-xs px-2.5 py-1 rounded-full border border-[#e2e2de] text-[#9a9a9a]">
+                  {post.tag}
                 </span>
+                <span className="text-xs text-[#9a9a9a]">{post.displayDate}</span>
+              </header>
+
+              <div>
+                <p className="text-xs text-[#9a9a9a] mb-2">{post.readTime}</p>
+                <h3 className="text-base font-semibold text-[#171a20] leading-snug">{post.title}</h3>
+              </div>
+
+              <p className="text-[#767676] text-sm flex-1 leading-relaxed">{post.excerpt}</p>
+
+              <div className="flex items-center justify-between pt-3 border-t border-[#e2e2de]">
+                <span className="text-xs text-[#9a9a9a]">Article</span>
                 <Link
                   to={`/blogs/${post.id}`}
-                  className="inline-flex items-center gap-2 text-xs text-accent-purple-light hover:gap-3 transition-all duration-200"
+                  className="text-sm font-medium text-[#171a20] hover:opacity-60 transition-opacity"
                 >
                   Read ↗
                 </Link>
@@ -70,19 +70,16 @@ const Blogs = () => {
           ))}
         </div>
 
-        <div
-          className={`text-center transition-all duration-700 ${
-            gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
+        {/* View all */}
+        <div className={`text-center transition-all duration-700 ${gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           <Link
             to="/blogs"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-border-light/60 text-xs font-mono uppercase tracking-[0.3em] text-slate-300 hover:border-accent-purple/40 hover:text-accent-purple-light transition-all duration-200"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#c0c0bc] text-sm text-[#474747] hover:border-[#171a20] hover:text-[#171a20] transition-all duration-200"
           >
-            View archive
-            <span>↗</span>
+            View all articles ↗
           </Link>
         </div>
+
       </div>
     </section>
   );

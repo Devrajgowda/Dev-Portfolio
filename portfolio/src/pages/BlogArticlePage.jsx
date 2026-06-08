@@ -692,18 +692,16 @@ const DIAGRAMS = {
 const RecommendedCard = ({ post }) => (
   <Link
     to={`/blogs/${post.id}`}
-    className="group flex gap-3 items-start p-3.5 rounded-xl border border-border hover:border-accent-purple/40 bg-bg-card hover:bg-accent-purple/5 transition-all duration-200"
+    className="group flex gap-3 items-start p-3.5 rounded-xl border border-[#e2e2de] hover:border-[#171a20]/30 bg-white transition-all duration-200"
   >
-    <span
-      className={`flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br ${post.gradient} flex items-center justify-center text-lg`}
-    >
+    <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#f3f3f0] border border-[#e2e2de] flex items-center justify-center text-lg">
       {post.coverEmoji}
     </span>
     <div className="min-w-0">
-      <p className="text-xs font-semibold text-slate-100 leading-snug group-hover:text-accent-purple-light transition-colors line-clamp-2">
+      <p className="text-xs font-semibold text-[#171a20] leading-snug line-clamp-2">
         {post.title}
       </p>
-      <p className="text-xs text-slate-500 mt-0.5">
+      <p className="text-xs text-[#9a9a9a] mt-0.5">
         {post.displayDate} · {post.readTime}
       </p>
     </div>
@@ -731,13 +729,10 @@ const BlogArticlePage = () => {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-bg-primary flex flex-col items-center justify-center gap-6 px-6">
+      <div className="min-h-screen bg-[#fafaf8] flex flex-col items-center justify-center gap-6 px-6">
         <p className="text-5xl">📭</p>
-        <h1 className="text-2xl font-bold text-slate-100">Article not found</h1>
-        <Link
-          to="/blogs"
-          className="text-sm text-accent-purple-light hover:underline"
-        >
+        <h1 className="text-2xl font-semibold text-[#171a20]">Article not found</h1>
+        <Link to="/blogs" className="text-sm text-[#767676] hover:text-[#171a20] transition-colors">
           ← Back to all articles
         </Link>
       </div>
@@ -755,7 +750,7 @@ const BlogArticlePage = () => {
     .slice(0, 4);
 
   return (
-    <div className="bg-bg-primary text-slate-100 min-h-screen">
+    <div className="bg-[#fafaf8] min-h-screen">
       <Navbar />
       <main className="pt-28 pb-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between flex-wrap gap-4">
@@ -781,42 +776,28 @@ const BlogArticlePage = () => {
         >
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div
-              className={`relative w-full h-[280px] md:h-[320px] rounded-[32px] overflow-hidden bg-gradient-to-br ${post.gradient} flex items-end shadow-card-soft`}
+              className={`relative w-full h-[280px] md:h-[320px] rounded-2xl overflow-hidden bg-[#171a20] flex items-end border border-[#2d2d2d]`}
             >
-              <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/5" />
-              <div className="absolute -bottom-8 -left-8 w-48 h-48 rounded-full bg-white/5" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[140px] opacity-10 select-none pointer-events-none">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[140px] opacity-5 select-none pointer-events-none">
                 {post.coverEmoji}
               </div>
               <div
-                className={`relative z-10 w-full px-6 sm:px-10 pb-12 pt-16 transition-all duration-700 delay-200 ${
-                  heroVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
+                className={`relative z-10 w-full px-6 sm:px-10 pb-10 pt-16 transition-all duration-700 delay-200 ${
+                  heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 }`}
               >
                 <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <span
-                    className={`inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border ${
-                      tagColors[post.tag] ||
-                      "bg-accent-purple/15 text-accent-purple-light border-accent-purple/25"
-                    }`}
-                  >
+                  <span className="inline-block text-xs font-medium uppercase tracking-widest px-3 py-1 rounded-full border border-white/20 text-white/70">
                     {post.tag}
                   </span>
-                  <span className="text-slate-200 text-xs">
-                    {post.displayDate}
-                  </span>
-                  <span className="text-slate-500 text-xs">·</span>
-                  <span className="text-slate-200 text-xs">
-                    {post.readTime}
-                  </span>
+                  <span className="text-white/50 text-xs">{post.displayDate}</span>
+                  <span className="text-white/30 text-xs">·</span>
+                  <span className="text-white/50 text-xs">{post.readTime}</span>
                 </div>
-                <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight drop-shadow-lg max-w-3xl">
+                <h1 className="text-3xl md:text-5xl font-semibold tracking-tight leading-tight text-white max-w-3xl">
                   {post.title}
                 </h1>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-bg-primary to-transparent" />
             </div>
           </div>
         </div>
@@ -858,10 +839,7 @@ const BlogArticlePage = () => {
                     transitionDelay: contentVisible ? `${si * 120}ms` : "0ms",
                   }}
                 >
-                  <h2 className="text-xl md:text-2xl font-extrabold text-slate-100 mb-4 flex items-center gap-3">
-                    <span className="w-7 h-7 rounded-lg bg-accent-purple/20 border border-accent-purple/30 flex items-center justify-center text-accent-purple-light text-xs font-bold flex-shrink-0">
-                      {si + 1}
-                    </span>
+                  <h2 className="text-xl md:text-2xl font-extrabold text-slate-100 mb-4">
                     {section.heading}
                   </h2>
                   {section.body.split("\n\n").map((para, pi) => (
@@ -894,14 +872,13 @@ const BlogArticlePage = () => {
             {/* Key Takeaways */}
             <div
               ref={takeawaysRef}
-              className={`mt-6 panel border border-accent-purple/40 rounded-[28px] p-7 transition-all duration-700 ${
+              className={`mt-6 bg-white border border-[#e2e2de] rounded-2xl p-7 transition-all duration-700 ${
                 takeawaysVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
             >
-              <h3 className="text-lg font-extrabold text-slate-100 mb-5 flex items-center gap-2">
-                <span className="text-accent-purple-light">✦</span>
+              <h3 className="text-base font-semibold text-[#171a20] mb-5">
                 Key Takeaways
               </h3>
               <ul className="space-y-3">
@@ -913,19 +890,12 @@ const BlogArticlePage = () => {
                       transitionDelay: takeawaysVisible ? `${i * 70}ms` : "0ms",
                     }}
                   >
-                    <span className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-accent-purple/20 border border-accent-purple/40 flex items-center justify-center">
-                      <svg
-                        width="9"
-                        height="9"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#a855f7"
-                        strokeWidth="3"
-                      >
+                    <span className="flex-shrink-0 mt-1 w-4 h-4 rounded-full bg-[#171a20] flex items-center justify-center">
+                      <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </span>
-                    <span className="text-slate-300 text-sm leading-relaxed">
+                    <span className="text-[#474747] text-sm leading-relaxed">
                       {item}
                     </span>
                   </li>
@@ -966,21 +936,14 @@ const BlogArticlePage = () => {
                   You are reading
                 </p>
                 <div className="flex items-start gap-3">
-                  <span
-                    className={`flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br ${post.gradient} flex items-center justify-center text-lg`}
-                  >
+                  <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#f3f3f0] border border-[#e2e2de] flex items-center justify-center text-lg">
                     {post.coverEmoji}
                   </span>
                   <div>
                     <p className="text-xs font-semibold text-slate-200 leading-snug line-clamp-3">
                       {post.title}
                     </p>
-                    <span
-                      className={`mt-1 inline-block text-xs font-bold uppercase tracking-widest px-2 py-0.5 rounded-md border ${
-                        tagColors[post.tag] ||
-                        "bg-accent-purple/15 text-accent-purple-light border-accent-purple/25"
-                      }`}
-                    >
+                    <span className="mt-1 inline-block text-xs uppercase tracking-widest px-2 py-0.5 rounded-md border border-[#e2e2de] text-[#9a9a9a]">
                       {post.tag}
                     </span>
                   </div>
@@ -1009,7 +972,7 @@ const BlogArticlePage = () => {
                 </div>
                 <Link
                   to="/blogs"
-                  className="mt-4 flex items-center justify-center gap-1.5 text-xs font-semibold text-accent-purple-light hover:text-white border border-accent-purple/30 hover:border-accent-purple py-2 rounded-xl transition-all duration-200"
+                  className="mt-4 flex items-center justify-center gap-1.5 text-xs font-medium text-[#474747] hover:text-[#171a20] border border-[#e2e2de] hover:border-[#171a20]/30 py-2 rounded-xl transition-all duration-200"
                 >
                   View all articles →
                 </Link>
@@ -1021,19 +984,14 @@ const BlogArticlePage = () => {
                   Browse by Tag
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {[
-                    "Design",
-                    "Development",
-                    "Design System",
-                    "UX Research",
-                  ].map((tag) => (
+                  {Array.from(new Set(blogs.map((b) => b.tag))).map((tag) => (
                     <Link
                       key={tag}
                       to={`/blogs?tag=${encodeURIComponent(tag)}`}
-                      className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-200 hover:-translate-y-0.5 ${
+                      className={`px-3 py-1 rounded-full text-xs border transition-all duration-200 ${
                         tag === post.tag
-                          ? tagColors[tag]
-                          : "border-border-light text-slate-400 hover:border-accent-purple/50 hover:text-accent-purple-light"
+                          ? "bg-[#171a20] text-white border-[#171a20]"
+                          : "border-[#e2e2de] text-[#474747] hover:border-[#171a20]/30 hover:text-[#171a20]"
                       }`}
                     >
                       {tag}
