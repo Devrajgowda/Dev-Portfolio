@@ -44,7 +44,7 @@ function MainLayout() {
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/Dev-Portfolio/">
         <Routes>
           <Route path="/" element={<MainLayout />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
